@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Use
     boolean loading = false;
 
     List<User> users = new ArrayList<>();
+    UserAdapter adapter;
+
 
     User user = new User();
     @Override
@@ -57,7 +59,9 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Use
                                             .build();
 
        userService = restAdapter.create(UserService.class);
-
+       //fixbug of listview reset on set adapter on every result success
+       adapter = new UserAdapter(this,this.users);
+       usersListView.setAdapter(adapter);
         //userService.getUsers(this);
 
        usersListView.setOnScrollListener(new AbsListView.OnScrollListener() {
@@ -83,9 +87,7 @@ public class MainActivity extends AppCompatActivity implements Callback<List<Use
     @Override
     public void success(List<User> users, Response response) {
        // ArrayAdapter<User> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,users);
-        UserAdapter adapter = new UserAdapter(this,this.users);
         adapter.addAll(users);
-        usersListView.setAdapter(adapter);
         errorTextView.setVisibility(View.GONE);
         progressBar.setVisibility(View.GONE);
         usersListView.setVisibility(View.VISIBLE);
