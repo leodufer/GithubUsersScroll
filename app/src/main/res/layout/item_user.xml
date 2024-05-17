@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imageViewUserAvatar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textviewUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Github Username"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/imageViewUserAvatar"
+       android:layout_marginStart="16dp"/>
+    <TextView
+        android:id="@+id/textviewUrl"
+        android:layout_width="wrap_content"
+        android:text="user url in github"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/imageViewUserAvatar"
+        app:layout_constraintTop_toBottomOf="@id/textviewUsername"
+        android:layout_marginStart="16dp"
+        android:textColor="#aaa"
+        android:textStyle="italic"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
